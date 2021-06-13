@@ -16,11 +16,9 @@ mongoose.connect('mongodb://localhost/CRMdb', {
 
 //Creates bodyParser connection
 app.use(express.json()); 
+app.use(express.urlencoded({ extended: true }));
 app.use(express.urlencoded());
-
-app.use(express.urlencoded({
-    extended: true
-}));
+app.use(express.urlencoded({ extended: true }));
 
 //When someone sends a get() request
 app.get('/', (req, res) =>

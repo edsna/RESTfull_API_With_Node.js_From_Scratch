@@ -6,7 +6,8 @@
 import { addNewContact,
 getContacts,
 getContactByID,
-updateContact
+updateContact,
+deleteContact
  } from '../controllers/crmController';
 
 
@@ -19,17 +20,19 @@ const routes = (app) => {
             next();
         }, (req, res, next) => {
             res.send('GET request in contact route was successfull')
+            //Get all contacts
             getContacts
         })
 
         .post(addNewContact);
 
     app.route('/contact/:contactID')
+        //Gets specific contact
         .get(getContactByID)
+        //updates specific contact
         .put( updateContact)
-        .delete((req, res) =>
-            res.send('DELETE request in contactID route was successfull!')
-    );
+        //deletes specific contact
+        .delete(deleteContact);
 }
 
 export default routes;  //exports function we'll use in index
