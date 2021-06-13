@@ -3,6 +3,8 @@
     Routes Function
     Takes an app as an argument
 */
+import { addNewContact } from '../controllers/crmController';
+
 const routes = (app) => {
     app.route('/contact')
         .get((req, res, next) => {
@@ -14,9 +16,7 @@ const routes = (app) => {
             res.send('GET request in contact route was successfull')
         })
 
-        .post((req, res) =>
-        res.send('POST request in contact route was successfull')
-    );
+        .post(addNewContact);
 
     app.route('/contact/:contactID')
         .put((req, res) =>
