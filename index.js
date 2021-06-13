@@ -7,6 +7,10 @@ const app = express();
 const PORT = 4000;  //Port for the server
 routes(app);
 
+//Serving static files (images or videos - mase sure to select file)
+app.use(express.static('public'))
+app.use(express.static('images'))
+
 //Connection between mongo and API
 mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://localhost/CRMdb', {
