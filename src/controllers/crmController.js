@@ -16,10 +16,20 @@ export const addNewContact = (req, res) => {
     });
 }
 
-export const getContact = (req, res) => {
+//Get all contacts in db
+export const getContacts = (req, res) => {
     Contact.find({}, (err, contact) => {
         if (err) {
-            console.log(Contact);
+            res.send(err);
+        }
+        res.json(contact);
+    });
+}
+
+//Get contact by ID
+export const getContactByID = (req, res) => {
+    Contact.findById(req.params.contactID, (err, contact) => {
+        if (err) {
             res.send(err);
         }
         res.json(contact);

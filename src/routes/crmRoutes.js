@@ -4,8 +4,10 @@
     Takes an app as an argument
 */
 import { addNewContact,
-getContacts
+getContacts,
+getContactByID
  } from '../controllers/crmController';
+
 
 const routes = (app) => {
     app.route('/contact')
@@ -22,6 +24,7 @@ const routes = (app) => {
         .post(addNewContact);
 
     app.route('/contact/:contactID')
+        .get(getContactByID)
         .put((req, res) =>
             res.send('PUT request in contactID route was successfull!')
         )
