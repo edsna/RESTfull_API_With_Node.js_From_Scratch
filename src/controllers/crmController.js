@@ -15,3 +15,13 @@ export const addNewContact = (req, res) => {
         res.json(contact);
     });
 }
+
+export const getContact = (req, res) => {
+    Contact.find({}, (err, contact) => {
+        if (err) {
+            console.log(Contact);
+            res.send(err);
+        }
+        res.json(contact);
+    });
+}
